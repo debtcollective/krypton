@@ -10,14 +10,14 @@ function queryMethod(method) {
 
     this._queryMethodCalls.push({
       args,
-      method,
+      method
     });
 
     return this;
   };
 }
 
-Krypton.Knex = Module(Krypton, 'Knex')({
+Krypton.Knex = Module(Krypton, "Knex")({
   prototype: {
     _queryMethodCalls: null,
 
@@ -32,159 +32,160 @@ Krypton.Knex = Module(Krypton, 'Knex')({
 
       this._queryMethodCalls = this._queryMethodCalls || [];
 
-      this._queryMethodCalls.forEach((call) => {
+      this._queryMethodCalls.forEach(call => {
         knexBuilder[call.method].apply(knexBuilder, call.args);
       });
-
 
       return knexBuilder;
     },
 
-    insert: queryMethod('insert'),
+    insert: queryMethod("insert"),
 
-    update: queryMethod('update'),
+    update: queryMethod("update"),
 
-    patch: queryMethod('patch'),
+    patch: queryMethod("patch"),
 
-    delete: queryMethod('delete'),
+    delete: queryMethod("delete"),
 
-    select: queryMethod('select'),
+    select: queryMethod("select"),
 
-    from: queryMethod('from'),
+    from: queryMethod("from"),
 
-    into: queryMethod('into'),
+    into: queryMethod("into"),
 
-    table: queryMethod('table'),
+    table: queryMethod("table"),
 
-    distinct: queryMethod('distinct'),
+    distinct: queryMethod("distinct"),
 
-    join: queryMethod('join'),
+    join: queryMethod("join"),
 
-    innerJoin: queryMethod('innerJoin'),
+    innerJoin: queryMethod("innerJoin"),
 
-    leftJoin: queryMethod('leftJoin'),
+    leftJoin: queryMethod("leftJoin"),
 
-    leftOuterJoin: queryMethod('leftOuterJoin'),
+    leftOuterJoin: queryMethod("leftOuterJoin"),
 
-    rightJoin: queryMethod('rightJoin'),
+    rightJoin: queryMethod("rightJoin"),
 
-    rightOuterJoin: queryMethod('rightOuterJoin'),
+    rightOuterJoin: queryMethod("rightOuterJoin"),
 
-    outerJoin: queryMethod('outerJoin'),
+    outerJoin: queryMethod("outerJoin"),
 
-    fullOuterJoin: queryMethod('fullOuterJoin'),
+    fullOuterJoin: queryMethod("fullOuterJoin"),
 
-    crossJoin: queryMethod('crossJoin'),
+    crossJoin: queryMethod("crossJoin"),
 
-    joinRaw: queryMethod('joinRaw'),
+    joinRaw: queryMethod("joinRaw"),
 
-    where: queryMethod('where'),
+    where: queryMethod("where"),
 
-    andWhere: queryMethod('andWhere'),
+    andWhere: queryMethod("andWhere"),
 
-    orWhere: queryMethod('orWhere'),
+    andWhereRaw: queryMethod("andWhereRaw"),
 
-    whereRaw: queryMethod('whereRaw'),
+    orWhere: queryMethod("orWhere"),
 
-    whereExists: queryMethod('whereExists'),
+    orWhereRaw: queryMethod("orWhereRaw"),
 
-    orWhereExists: queryMethod('orWhereExists'),
+    whereRaw: queryMethod("whereRaw"),
 
-    whereNot: queryMethod('whereNot'),
+    whereExists: queryMethod("whereExists"),
 
-    whereNotExists: queryMethod('whereNotExists'),
+    orWhereExists: queryMethod("orWhereExists"),
 
-    orWhereNotExists: queryMethod('orWhereNotExists'),
+    whereNot: queryMethod("whereNot"),
 
-    whereIn: queryMethod('whereIn'),
+    whereNotExists: queryMethod("whereNotExists"),
 
-    orWhereIn: queryMethod('orWhereIn'),
+    orWhereNotExists: queryMethod("orWhereNotExists"),
 
-    whereNotIn: queryMethod('whereNotIn'),
+    whereIn: queryMethod("whereIn"),
 
-    orWhereNotIn: queryMethod('orWhereNotIn'),
+    orWhereIn: queryMethod("orWhereIn"),
 
-    whereNull: queryMethod('whereNull'),
+    whereNotIn: queryMethod("whereNotIn"),
 
-    whereNotNull: queryMethod('whereNotNull'),
+    orWhereNotIn: queryMethod("orWhereNotIn"),
 
-    orWhereNull: queryMethod('orWhereNull'),
+    whereNull: queryMethod("whereNull"),
 
-    orWhereNotNull: queryMethod('orWhereNotNull'),
+    whereNotNull: queryMethod("whereNotNull"),
 
-    whereBetween: queryMethod('whereBetween'),
+    orWhereNull: queryMethod("orWhereNull"),
 
-    whereNotBetween: queryMethod('whereNotBetween'),
+    orWhereNotNull: queryMethod("orWhereNotNull"),
 
-    orWhereBetween: queryMethod('orWhereBetween'),
+    whereBetween: queryMethod("whereBetween"),
 
-    orWhereNotBetween: queryMethod('orWhereNotBetween'),
+    whereNotBetween: queryMethod("whereNotBetween"),
 
-    groupBy: queryMethod('groupBy'),
+    orWhereBetween: queryMethod("orWhereBetween"),
 
-    groupByRaw: queryMethod('groupByRaw'),
+    orWhereNotBetween: queryMethod("orWhereNotBetween"),
 
-    orderBy: queryMethod('orderBy'),
+    groupBy: queryMethod("groupBy"),
 
-    orderByRaw: queryMethod('orderByRaw'),
+    groupByRaw: queryMethod("groupByRaw"),
 
-    union: queryMethod('union'),
+    orderBy: queryMethod("orderBy"),
 
-    unionAll: queryMethod('unionAll'),
+    orderByRaw: queryMethod("orderByRaw"),
 
-    having: queryMethod('having'),
+    union: queryMethod("union"),
 
-    havingRaw: queryMethod('havingRaw'),
+    unionAll: queryMethod("unionAll"),
 
-    offset: queryMethod('offset'),
+    having: queryMethod("having"),
 
-    limit: queryMethod('limit'),
+    havingRaw: queryMethod("havingRaw"),
 
-    count: queryMethod('count'),
+    offset: queryMethod("offset"),
 
-    min: queryMethod('min'),
+    limit: queryMethod("limit"),
 
-    max: queryMethod('max'),
+    count: queryMethod("count"),
 
-    sum: queryMethod('sum'),
+    min: queryMethod("min"),
 
-    avg: queryMethod('avg'),
+    max: queryMethod("max"),
 
-    increment: queryMethod('increment'),
+    sum: queryMethod("sum"),
 
-    decrement: queryMethod('decrement'),
+    avg: queryMethod("avg"),
 
-    debug: queryMethod('debug'),
+    increment: queryMethod("increment"),
 
-    returning: queryMethod('returning'),
+    decrement: queryMethod("decrement"),
 
-    truncate: queryMethod('truncate'),
+    debug: queryMethod("debug"),
 
-    first: queryMethod('first'),
+    returning: queryMethod("returning"),
 
-    as: queryMethod('as'),
+    truncate: queryMethod("truncate"),
 
-    pluck: queryMethod('pluck'),
+    first: queryMethod("first"),
 
-    transacting: queryMethod('transacting'),
+    as: queryMethod("as"),
 
-    forUpdate: queryMethod('forUpdate'),
+    pluck: queryMethod("pluck"),
 
-    forShare: queryMethod('forShare'),
+    transacting: queryMethod("transacting"),
+
+    forUpdate: queryMethod("forUpdate"),
+
+    forShare: queryMethod("forShare"),
 
     page(page, pageSize) {
       const start = (page - 1) * pageSize;
-      const end = ((page) * pageSize) - 1;
+      const end = page * pageSize - 1;
 
       return this.range(start, end);
     },
 
     range(start, end) {
-      return this
-        .limit((end - start) + 1)
-        .offset(start);
-    },
-  },
+      return this.limit(end - start + 1).offset(start);
+    }
+  }
 });
 
 module.exports = Krypton.Knex;
