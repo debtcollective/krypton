@@ -10,14 +10,17 @@ function queryMethod(method) {
 
     this._queryMethodCalls.push({
       args,
-      method
+      method,
     });
 
     return this;
   };
 }
 
-Krypton.Knex = Module(Krypton, "Knex")({
+Krypton.Knex = Module(
+  Krypton,
+  "Knex"
+)({
   prototype: {
     _queryMethodCalls: null,
 
@@ -32,8 +35,8 @@ Krypton.Knex = Module(Krypton, "Knex")({
 
       this._queryMethodCalls = this._queryMethodCalls || [];
 
-      this._queryMethodCalls.forEach(call => {
-        knexBuilder[call.method].apply(knexBuilder, call.args);
+      this._queryMethodCalls.forEach((call) => {
+        knexBuilder[call.method](...call.args);
       });
 
       return knexBuilder;
@@ -175,6 +178,8 @@ Krypton.Knex = Module(Krypton, "Knex")({
 
     forShare: queryMethod("forShare"),
 
+    countDistinct: queryMethod("countDistinct"),
+
     page(page, pageSize) {
       const start = (page - 1) * pageSize;
       const end = page * pageSize - 1;
@@ -184,8 +189,8 @@ Krypton.Knex = Module(Krypton, "Knex")({
 
     range(start, end) {
       return this.limit(end - start + 1).offset(start);
-    }
-  }
+    },
+  },
 });
 
 module.exports = Krypton.Knex;
